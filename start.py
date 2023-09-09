@@ -6,13 +6,7 @@ from aiogram.dispatcher import FSMContext
 
 from loader import dp, bot
 
-chat_id = "-1001818918192"
-
-
-# @dp.message_handler(state=['*', 'start'], content_types=types.ContentTypes.ANY)
-# async def start(message: types.Message, state: FSMContext):
-#     await state.finish()
-#     await message.answer(message.photo[-1].file_id)
+chat_id = "some chat id"
 
 @dp.message_handler(commands='start', state=['*', 'start'])
 async def start(message: types.Message, state: FSMContext):

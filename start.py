@@ -104,23 +104,17 @@ async def snaps_end(message: types.Message, state: FSMContext):
         for file_id in media_dict:
             if counter > 0:
                 kwargs = {"media": file_id}
-                type_media = media_dict[file_id]
-                if type_media == "photo":
-                    media.append(types.InputMediaPhoto(**kwargs))
-                elif type_media == "video":
-                    media.append(types.InputMediaVideo(**kwargs))
-                else:
-                    pass
             else:
                 kwargs = {"caption": text, "media": file_id}
-                type_media = media_dict[file_id]
-                if type_media == "photo":
-                    media.append(types.InputMediaPhoto(**kwargs))
-                elif type_media == "video":
-                    media.append(types.InputMediaVideo(**kwargs))
-                else:
-                    pass
-                counter = counter + 1
+                
+            type_media = media_dict[file_id]
+            if type_media == "photo":
+                media.append(types.InputMediaPhoto(**kwargs))
+            elif type_media == "video":
+                media.append(types.InputMediaVideo(**kwargs))
+            else:
+                pass
+            counter = counter + 1
                 
         quantity_pages = math.ceil(len(media) / 10)
         for page in range(quantity_pages):
